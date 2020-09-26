@@ -1,5 +1,10 @@
 # simple_ansilbe_api
 
+### How to install
+``` bash
+pip install simple-ansible-api
+```
+
 ### ad-hoc
 ``` python
 from simple_ansible_api.api import AnsiBleApi
