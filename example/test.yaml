@@ -1,0 +1,38 @@
+---
+- name: a test playbook
+  hosts: nginx
+  gather_facts: no
+  vars:
+   network: "172.0.0.0/8"
+  tasks:
+  - name: "task1"
+    shell: ip a |grep inet
+    register: addr
+
+  - name: "task2"
+    debug: msg="{{addr.cmd}}"
+
+  - name: "task3"
+    debug: msg="{{network}}"
+
+  - name: "task4"
+    shell: "rm -rf /tmp/foo.txt"
+
+  - name: "task5"
+    file: 'path=/tmp/foo.txt state=touch mode=0755 owner=root group=root'
+
+- name:  xxx
+  gather_facts: no
+  hosts: nginx
+  tasks:
+  - shell: ifconfig
+    register: addr2
+  - debug: msg="{{addr}}"
+
+- name: a test tow
+  gather_facts: no
+  hosts: vagrant
+  tasks:
+  - shell: ls /root/
+    register: dir
+  - debug: msg="{{dir}}"

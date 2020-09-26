@@ -1,0 +1,4 @@
+[web]
+nginx ansible_ssh_host=192.168.0.107
+[db]
+mongo ansible_ssh_host=192.168.0.107
